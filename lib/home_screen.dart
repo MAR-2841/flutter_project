@@ -82,6 +82,38 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
+                // ⚙️ Settings Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      padding: EdgeInsets.zero,
+                    ),
+                    onPressed: () {
+                      Get.toNamed('/settings');
+                    },
+                    child: Ink(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xff434343), Color(0xff000000)],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Settings",
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
                 // 🚪 Logout Button
                 SizedBox(
                   width: double.infinity,
