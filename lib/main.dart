@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
+import 'settings_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -32,11 +33,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      themeMode: ThemeMode.system,
       initialRoute: '/login',
       getPages: [
         GetPage(name: '/login', page: () => const LogIn()),
         GetPage(name: '/signup', page: () => const SignUp()),
         GetPage(name: '/home', page: () => const HomeScreen()),
+        GetPage(name: '/settings', page: () => const SettingsScreen()),
       ],
     );
   }
