@@ -25,7 +25,7 @@ class NotificationScreen extends StatelessWidget {
       {
         "title": "Update Available",
         "body": "Version 1.0.1 is now available. Please update for new features.",
-        "time": "yesterday"
+        "time": "Yesterday"
       },
     ];
 
@@ -45,7 +45,7 @@ class NotificationScreen extends StatelessWidget {
       body: notifications.isEmpty
           ? const Center(
               child: Column(
-                mainAxisAlignment: MainValue.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.notifications_off_outlined, size: 80, color: Colors.grey),
                   SizedBox(height: 10),
