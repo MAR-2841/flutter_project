@@ -5,6 +5,7 @@ import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
 import 'settings_screen.dart';
+import 'notification_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: () => const SignUp()),
         GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/settings', page: () => const SettingsScreen()),
+        GetPage(name: '/notifications', page: () => const NotificationScreen()),
       ],
     );
   }
