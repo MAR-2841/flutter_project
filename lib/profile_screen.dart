@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -62,23 +61,6 @@ class ProfileScreen extends StatelessWidget {
             _buildProfileItem(Icons.phone_outlined, "Phone", "+1 234 567 890"),
             _buildProfileItem(Icons.location_on_outlined, "Address", "123 Street, City, Country"),
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  ),
-                  onPressed: () {
-                    Get.snackbar("Update", "Profile update feature coming soon!");
-                  },
-                  child: const Text("Edit Profile", style: TextStyle(color: Colors.white, fontSize: 16)),
-                ),
-              ),
-            ),
           ],
         ),
       ),
