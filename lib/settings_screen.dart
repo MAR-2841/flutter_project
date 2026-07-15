@@ -69,7 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             leading: const Icon(Icons.person),
             title: const Text("Profile Information"),
             onTap: () {
-              Get.snackbar("Profile", "Profile editing coming soon!");
+              Get.toNamed('/profile');
             },
           ),
           ListTile(
