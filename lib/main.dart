@@ -14,17 +14,15 @@ import 'profile_screen.dart';
 bool isFirebaseInitialized = false;
 
 void main() async {
-  // Ensure Flutter bindings are initialized before any async calls
   WidgetsFlutterBinding.ensureInitialized();
-  
   try {
-    // Initialize Firebase (will fail gracefully if options are missing)
+    // This will fail if firebase_options.dart is missing or config is wrong
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
+    debugPrint("Firebase initialized successfully");
   } catch (e) {
-    debugPrint("Firebase initialization skipped or failed: $e");
+    debugPrint("Firebase initialization skipped: $e");
   }
-
   runApp(const MyApp());
 }
 
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
       title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
       
-      // 🎨 Improved Light Theme
+      // Modern Light Theme
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -50,19 +48,23 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // 🌙 Improved Dark Theme
+      // Professional Dark Theme
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
           brightness: Brightness.dark,
         ),
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+        ),
       ),
 
       // Sync with System Theme
       themeMode: ThemeMode.system,
       
-      // 🚀 Global Navigation Settings
+      // Global Navigation Settings
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 400),
 
