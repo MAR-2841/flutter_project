@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+// Screens
 import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
@@ -12,14 +14,17 @@ import 'profile_screen.dart';
 bool isFirebaseInitialized = false;
 
 void main() async {
+  // Ensure Flutter bindings are initialized before any async calls
   WidgetsFlutterBinding.ensureInitialized();
+  
   try {
-    // This will fail if firebase_options.dart is missing or config is wrong
+    // Initialize Firebase (will fail gracefully if options are missing)
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
   } catch (e) {
-    print("Firebase initialization skipped: $e");
+    debugPrint("Firebase initialization skipped or failed: $e");
   }
+
   runApp(const MyApp());
 }
 
@@ -29,22 +34,68 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Auth Demo',
+      title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
+      
+      // 🎨 Improved Light Theme
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.light,
+        ),
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+        ),
       ),
-      darkTheme: ThemeData.dark(useMaterial3: true),
+
+      // 🌙 Improved Dark Theme
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
+      ),
+
+      // Sync with System Theme
       themeMode: ThemeMode.system,
+      
+      // 🚀 Global Navigation Settings
+      defaultTransition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 400),
+
       initialRoute: '/login',
+      
       getPages: [
-        GetPage(name: '/login', page: () => const LogIn()),
-        GetPage(name: '/signup', page: () => const SignUp()),
-        GetPage(name: '/home', page: () => const HomeScreen()),
-        GetPage(name: '/settings', page: () => const SettingsScreen()),
-        GetPage(name: '/notifications', page: () => const NotificationScreen()),
-        GetPage(name: '/profile', page: () => const ProfileScreen()),
+        GetPage(
+          name: '/login', 
+          page: () => const LogIn(),
+          transition: Transition.fadeIn,
+        ),
+        GetPage(
+          name: '/signup', 
+          page: () => const SignUp(),
+        ),
+        GetPage(
+          name: '/home', 
+          page: () => const HomeScreen(),
+          transition: Transition.rightToLeftWithFade,
+        ),
+        GetPage(
+          name: '/settings', 
+          page: () => const SettingsScreen(),
+        ),
+        GetPage(
+          name: '/notifications', 
+          page: () => const NotificationScreen(),
+          transition: Transition.downToUp,
+        ),
+        GetPage(
+          name: '/profile', 
+          page: () => const ProfileScreen(),
+        ),
       ],
     );
   }
