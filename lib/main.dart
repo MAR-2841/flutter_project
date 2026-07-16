@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// Import Screens
+// Screens
 import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
@@ -10,22 +10,19 @@ import 'settings_screen.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
 
-// Global state to track Firebase status
+// Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
 
 void main() async {
-  // Ensure that plugin services are initialized before use
+  // Ensure Flutter bindings are initialized before any async calls
   WidgetsFlutterBinding.ensureInitialized();
   
   try {
-    // Attempt to initialize Firebase
+    // Initialize Firebase (will fail gracefully if options are missing)
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
-    debugPrint("✅ Firebase initialized successfully");
   } catch (e) {
-    // Graceful fallback if Firebase is not configured (e.g., missing google-services.json)
-    debugPrint("⚠️ Firebase initialization skipped: $e");
-    debugPrint("The app will run in Offline Mode (SQLite only).");
+    debugPrint("Firebase initialization skipped or failed: $e");
   }
 
   runApp(const MyApp());
@@ -40,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
       
-      // 🎨 Modern Material 3 Light Theme
+      // 🎨 Improved Light Theme
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -50,34 +47,24 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          ),
         ),
       ),
 
-      // 🌙 Professional Dark Theme
+      // 🌙 Improved Dark Theme
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
           brightness: Brightness.dark,
         ),
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-        ),
       ),
 
-      // Automatically switch based on system settings
+      // Sync with System Theme
       themeMode: ThemeMode.system,
       
-      // 🚀 Advanced Navigation Settings
-      defaultTransition: Transition.cupertino, // Smooth native transitions
-      transitionDuration: const Duration(milliseconds: 500),
+      // 🚀 Global Navigation Settings
+      defaultTransition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 400),
 
       initialRoute: '/login',
       
@@ -85,32 +72,29 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/login', 
           page: () => const LogIn(),
-          transition: Transition.fadeIn, // Smooth entry for auth
+          transition: Transition.fadeIn,
         ),
         GetPage(
           name: '/signup', 
           page: () => const SignUp(),
-          transition: Transition.rightToLeft,
         ),
         GetPage(
           name: '/home', 
           page: () => const HomeScreen(),
-          transition: Transition.zoom, // Dynamic entry for home
+          transition: Transition.rightToLeftWithFade,
         ),
         GetPage(
           name: '/settings', 
           page: () => const SettingsScreen(),
-          transition: Transition.native,
         ),
         GetPage(
           name: '/notifications', 
           page: () => const NotificationScreen(),
-          transition: Transition.downToUp, // Traditional notification slide
+          transition: Transition.downToUp,
         ),
         GetPage(
           name: '/profile', 
           page: () => const ProfileScreen(),
-          transition: Transition.circularReveal, // Stylish entry for profile
         ),
       ],
     );
