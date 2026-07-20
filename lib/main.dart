@@ -10,6 +10,7 @@ import 'settings_screen.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
 import 'dashboard_screen.dart';
+import 'help_support_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -102,6 +103,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/dashboard', 
           page: () => const DashboardScreen(),
+        ),
+        GetPage(
+          name: '/help', 
+          page: () => const HelpSupportScreen(),
         ),
       ],
     );
