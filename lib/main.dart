@@ -13,6 +13,8 @@ import 'dashboard_screen.dart';
 import 'help_support_screen.dart';
 import 'about_screen.dart';
 import 'analytics_screen.dart';
+import 'task_screen.dart';
+import 'calendar_screen.dart';
 
 // Global state to track Firebase status
 bool isFirebaseInitialized = false;
@@ -27,9 +29,8 @@ void main() async {
     isFirebaseInitialized = true;
     debugPrint("✅ Firebase initialized successfully");
   } catch (e) {
-    // Graceful fallback if Firebase is not configured (e.g., missing google-services.json)
+    // Graceful fallback if Firebase is not configured
     debugPrint("⚠️ Firebase initialization skipped: $e");
-    debugPrint("The app will run in Offline Mode (SQLite only).");
   }
 
   runApp(const MyApp());
@@ -80,49 +81,18 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       
       getPages: [
-        GetPage(
-          name: '/login', 
-          page: () => const LogIn(),
-          transition: Transition.fadeIn,
-        ),
-        GetPage(
-          name: '/signup', 
-          page: () => const SignUp(),
-        ),
-        GetPage(
-          name: '/home', 
-          page: () => const HomeScreen(),
-          transition: Transition.rightToLeftWithFade,
-        ),
-        GetPage(
-          name: '/settings', 
-          page: () => const SettingsScreen(),
-        ),
-        GetPage(
-          name: '/notifications', 
-          page: () => const NotificationScreen(),
-          transition: Transition.downToUp,
-        ),
-        GetPage(
-          name: '/profile', 
-          page: () => const ProfileScreen(),
-        ),
-        GetPage(
-          name: '/dashboard', 
-          page: () => const DashboardScreen(),
-        ),
-        GetPage(
-          name: '/help', 
-          page: () => const HelpSupportScreen(),
-        ),
-        GetPage(
-          name: '/about', 
-          page: () => const AboutScreen(),
-        ),
-        GetPage(
-          name: '/analytics', 
-          page: () => const AnalyticsScreen(),
-        ),
+        GetPage(name: '/login', page: () => const LogIn(), transition: Transition.fadeIn),
+        GetPage(name: '/signup', page: () => const SignUp()),
+        GetPage(name: '/home', page: () => const HomeScreen(), transition: Transition.rightToLeftWithFade),
+        GetPage(name: '/settings', page: () => const SettingsScreen()),
+        GetPage(name: '/notifications', page: () => const NotificationScreen(), transition: Transition.downToUp),
+        GetPage(name: '/profile', page: () => const ProfileScreen()),
+        GetPage(name: '/dashboard', page: () => const DashboardScreen()),
+        GetPage(name: '/help', page: () => const HelpSupportScreen()),
+        GetPage(name: '/about', page: () => const AboutScreen()),
+        GetPage(name: '/analytics', page: () => const AnalyticsScreen()),
+        GetPage(name: '/tasks', page: () => const TaskScreen()),
+        GetPage(name: '/calendar', page: () => const CalendarScreen()),
       ],
     );
   }
