@@ -9,6 +9,7 @@ import 'home_screen.dart';
 import 'settings_screen.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
+import 'dashboard_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -97,6 +98,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/profile', 
           page: () => const ProfileScreen(),
+        ),
+        GetPage(
+          name: '/dashboard', 
+          page: () => const DashboardScreen(),
         ),
       ],
     );
