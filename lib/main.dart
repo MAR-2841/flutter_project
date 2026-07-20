@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// Import Screens
+// Screens
 import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
@@ -10,29 +10,25 @@ import 'settings_screen.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
 import 'dashboard_screen.dart';
-import 'help_support_screen.dart';
-import 'about_screen.dart';
 import 'analytics_screen.dart';
 import 'task_screen.dart';
 import 'calendar_screen.dart';
+import 'help_support_screen.dart';
+import 'about_screen.dart';
 
-// Global state to track Firebase status
+// Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
 
 void main() async {
-  // Ensure that plugin services are initialized before use
   WidgetsFlutterBinding.ensureInitialized();
-  
   try {
-    // Attempt to initialize Firebase
+    // This will fail if firebase_options.dart is missing or config is wrong
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
-    debugPrint("✅ Firebase initialized successfully");
+    debugPrint("Firebase initialized successfully");
   } catch (e) {
-    // Graceful fallback if Firebase is not configured
-    debugPrint("⚠️ Firebase initialization skipped: $e");
+    debugPrint("Firebase initialization skipped: $e");
   }
-
   runApp(const MyApp());
 }
 
@@ -45,7 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
       
-      // 🎨 Modern Material 3 Light Theme
+      // Modern Light Theme
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -58,7 +54,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // 🌙 Professional Dark Theme
+      // Professional Dark Theme
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -71,28 +67,67 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // Automatically switch based on system settings
+      // Sync with System Theme
       themeMode: ThemeMode.system,
       
-      // 🚀 Global Navigation Settings
+      // Global Navigation Settings
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 400),
 
       initialRoute: '/login',
       
       getPages: [
-        GetPage(name: '/login', page: () => const LogIn(), transition: Transition.fadeIn),
-        GetPage(name: '/signup', page: () => const SignUp()),
-        GetPage(name: '/home', page: () => const HomeScreen(), transition: Transition.rightToLeftWithFade),
-        GetPage(name: '/settings', page: () => const SettingsScreen()),
-        GetPage(name: '/notifications', page: () => const NotificationScreen(), transition: Transition.downToUp),
-        GetPage(name: '/profile', page: () => const ProfileScreen()),
-        GetPage(name: '/dashboard', page: () => const DashboardScreen()),
-        GetPage(name: '/help', page: () => const HelpSupportScreen()),
-        GetPage(name: '/about', page: () => const AboutScreen()),
-        GetPage(name: '/analytics', page: () => const AnalyticsScreen()),
-        GetPage(name: '/tasks', page: () => const TaskScreen()),
-        GetPage(name: '/calendar', page: () => const CalendarScreen()),
+        GetPage(
+          name: '/login', 
+          page: () => const LogIn(),
+          transition: Transition.fadeIn,
+        ),
+        GetPage(
+          name: '/signup', 
+          page: () => const SignUp(),
+        ),
+        GetPage(
+          name: '/home', 
+          page: () => const HomeScreen(),
+          transition: Transition.rightToLeftWithFade,
+        ),
+        GetPage(
+          name: '/settings', 
+          page: () => const SettingsScreen(),
+        ),
+        GetPage(
+          name: '/notifications', 
+          page: () => const NotificationScreen(),
+          transition: Transition.downToUp,
+        ),
+        GetPage(
+          name: '/profile', 
+          page: () => const ProfileScreen(),
+        ),
+        GetPage(
+          name: '/dashboard', 
+          page: () => const DashboardScreen(),
+        ),
+        GetPage(
+          name: '/analytics', 
+          page: () => const AnalyticsScreen(),
+        ),
+        GetPage(
+          name: '/tasks', 
+          page: () => const TaskScreen(),
+        ),
+        GetPage(
+          name: '/calendar', 
+          page: () => const CalendarScreen(),
+        ),
+        GetPage(
+          name: '/help', 
+          page: () => const HelpSupportScreen(),
+        ),
+        GetPage(
+          name: '/about', 
+          page: () => const AboutScreen(),
+        ),
       ],
     );
   }
