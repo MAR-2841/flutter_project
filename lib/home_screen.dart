@@ -17,136 +17,116 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(30),
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 15,
-                  offset: const Offset(0, 8),
-                )
-              ],
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(30),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.9),
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 15,
+                    offset: const Offset(0, 8),
+                  )
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.home, size: 80, color: Colors.blue),
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Welcome Home 🎉",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "You are successfully logged in",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 25),
+                  
+                  // 📊 Dashboard Button
+                  _buildMenuButton(
+                    label: "Dashboard",
+                    icon: Icons.dashboard_outlined,
+                    gradient: const [Color(0xff6a11cb), Color(0xff2575fc)],
+                    onTap: () => Get.toNamed('/dashboard'),
+                  ),
+                  const SizedBox(height: 15),
+                  
+                  // 👥 Manage Users Button
+                  _buildMenuButton(
+                    label: "Manage Users",
+                    icon: Icons.people_outline,
+                    gradient: const [Color(0xff11998e), Color(0xff38ef7d)],
+                    onTap: () => Get.to(() => const UserListScreen()),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // 🔔 Notifications Button
+                  _buildMenuButton(
+                    label: "Notifications",
+                    icon: Icons.notifications_none,
+                    gradient: const [Color(0xfff093fb), Color(0xfff5576c)],
+                    onTap: () => Get.toNamed('/notifications'),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // ⚙️ Settings Button
+                  _buildMenuButton(
+                    label: "Settings",
+                    icon: Icons.settings_outlined,
+                    gradient: const [Color(0xff434343), Color(0xff000000)],
+                    onTap: () => Get.toNamed('/settings'),
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuButton({
+    required String label,
+    required IconData icon,
+    required List<Color> gradient,
+    required VoidCallback onTap,
+  }) {
+    return SizedBox(
+      width: double.infinity,
+      height: 55,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          padding: EdgeInsets.zero,
+        ),
+        onPressed: onTap,
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: gradient),
+            borderRadius: const BorderRadius.all(Radius.circular(15)),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.home, size: 80, color: Colors.blue),
-                const SizedBox(height: 15),
-                const Text(
-                  "Welcome Home 🎉",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  "You are successfully logged in",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const SizedBox(height: 25),
-                
-                // 👥 Manage Users Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    onPressed: () {
-                      Get.to(() => const UserListScreen());
-                    },
-                    child: Ink(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xff6a11cb), Color(0xff2575fc)],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Manage Users",
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 15),
-
-                // 🔔 Notifications Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    onPressed: () {
-                      Get.toNamed('/notifications');
-                    },
-                    child: Ink(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xfff093fb), Color(0xfff5576c)],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Notifications",
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 15),
-
-                // ⚙️ Settings Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    onPressed: () {
-                      Get.toNamed('/settings');
-                    },
-                    child: Ink(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xff434343), Color(0xff000000)],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Settings",
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                Icon(icon, color: Colors.white, size: 22),
+                const SizedBox(width: 10),
+                Text(
+                  label,
+                  style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
