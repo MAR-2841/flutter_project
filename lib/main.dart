@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// Screens
+// Import Screens
 import 'login_screen.dart';
 import 'signup_screen.dart';
 import 'home_screen.dart';
@@ -12,20 +12,26 @@ import 'profile_screen.dart';
 import 'dashboard_screen.dart';
 import 'help_support_screen.dart';
 import 'about_screen.dart';
+import 'analytics_screen.dart';
 
-// Global flag to check if firebase is ready
+// Global state to track Firebase status
 bool isFirebaseInitialized = false;
 
 void main() async {
+  // Ensure that plugin services are initialized before use
   WidgetsFlutterBinding.ensureInitialized();
+  
   try {
-    // This will fail if firebase_options.dart is missing or config is wrong
+    // Attempt to initialize Firebase
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
-    debugPrint("Firebase initialized successfully");
+    debugPrint("✅ Firebase initialized successfully");
   } catch (e) {
-    debugPrint("Firebase initialization skipped: $e");
+    // Graceful fallback if Firebase is not configured (e.g., missing google-services.json)
+    debugPrint("⚠️ Firebase initialization skipped: $e");
+    debugPrint("The app will run in Offline Mode (SQLite only).");
   }
+
   runApp(const MyApp());
 }
 
@@ -38,7 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
       
-      // Modern Light Theme
+      // 🎨 Modern Material 3 Light Theme
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -51,7 +57,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // Professional Dark Theme
+      // 🌙 Professional Dark Theme
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -64,10 +70,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // Sync with System Theme
+      // Automatically switch based on system settings
       themeMode: ThemeMode.system,
       
-      // Global Navigation Settings
+      // 🚀 Global Navigation Settings
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 400),
 
@@ -112,6 +118,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/about', 
           page: () => const AboutScreen(),
+        ),
+        GetPage(
+          name: '/analytics', 
+          page: () => const AnalyticsScreen(),
         ),
       ],
     );
