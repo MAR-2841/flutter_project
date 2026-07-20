@@ -83,7 +83,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
-              "App Info",
+              "Support & About",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -91,11 +91,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ),
+          ListTile(
+            leading: const Icon(Icons.help_outline),
+            title: const Text("Help & Support"),
+            onTap: () {
+              Get.toNamed('/help');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: const Text("About App"),
+            onTap: () {
+              Get.toNamed('/about');
+            },
+          ),
           const ListTile(
-            leading: Icon(Icons.info_outline),
+            leading: Icon(Icons.code),
             title: Text("Version"),
             trailing: Text("1.0.0"),
           ),
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.logout, color: Colors.red),
             title: const Text("Log Out", style: TextStyle(color: Colors.red)),
@@ -103,6 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Get.offAllNamed('/login');
             },
           ),
+          const SizedBox(height: 20),
         ],
       ),
     );
