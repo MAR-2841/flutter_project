@@ -19,6 +19,10 @@ import 'about_screen.dart';
 import 'chat_screen.dart';
 import 'search_screen.dart';
 import 'gallery_screen.dart';
+import 'wallet_screen.dart';
+import 'notes_screen.dart';
+import 'contacts_screen.dart';
+import 'news_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -26,7 +30,6 @@ bool isFirebaseInitialized = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    // This will fail if firebase_options.dart is missing or config is wrong
     await Firebase.initializeApp();
     isFirebaseInitialized = true;
     debugPrint("Firebase initialized successfully");
@@ -44,8 +47,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Lab 1 Pro App',
       debugShowCheckedModeBanner: false,
-      
-      // Modern Light Theme
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -57,8 +58,6 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-
-      // Professional Dark Theme
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -70,16 +69,10 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-
-      // Sync with System Theme
       themeMode: ThemeMode.system,
-      
-      // Global Navigation Settings
       defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 400),
-
       initialRoute: '/login',
-      
       getPages: [
         GetPage(name: '/login', page: () => const LogIn(), transition: Transition.fadeIn),
         GetPage(name: '/signup', page: () => const SignUp()),
@@ -97,6 +90,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/chats', page: () => const ChatScreen()),
         GetPage(name: '/search', page: () => const SearchScreen()),
         GetPage(name: '/gallery', page: () => const GalleryScreen()),
+        GetPage(name: '/wallet', page: () => const WalletScreen()),
+        GetPage(name: '/notes', page: () => const NotesScreen()),
+        GetPage(name: '/contacts', page: () => const ContactsScreen()),
+        GetPage(name: '/news', page: () => const NewsScreen()),
       ],
     );
   }
