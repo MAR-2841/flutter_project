@@ -9,6 +9,7 @@ import 'home_screen.dart';
 import 'settings_screen.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
+import 'profile_edit_screen.dart';
 import 'dashboard_screen.dart';
 import 'analytics_screen.dart';
 import 'task_screen.dart';
@@ -16,6 +17,7 @@ import 'calendar_screen.dart';
 import 'help_support_screen.dart';
 import 'about_screen.dart';
 import 'chat_screen.dart';
+import 'search_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -106,6 +108,10 @@ class MyApp extends StatelessWidget {
           page: () => const ProfileScreen(),
         ),
         GetPage(
+          name: '/profile_edit', 
+          page: () => const ProfileEditScreen(),
+        ),
+        GetPage(
           name: '/dashboard', 
           page: () => const DashboardScreen(),
         ),
@@ -132,6 +138,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/chats', 
           page: () => const ChatScreen(),
+        ),
+        GetPage(
+          name: '/search', 
+          page: () => const SearchScreen(),
         ),
       ],
     );
