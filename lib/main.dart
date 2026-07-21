@@ -15,6 +15,7 @@ import 'task_screen.dart';
 import 'calendar_screen.dart';
 import 'help_support_screen.dart';
 import 'about_screen.dart';
+import 'chat_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -127,6 +128,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/about', 
           page: () => const AboutScreen(),
+        ),
+        GetPage(
+          name: '/chats', 
+          page: () => const ChatScreen(),
         ),
       ],
     );
