@@ -18,6 +18,7 @@ import 'help_support_screen.dart';
 import 'about_screen.dart';
 import 'chat_screen.dart';
 import 'search_screen.dart';
+import 'gallery_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -80,69 +81,22 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       
       getPages: [
-        GetPage(
-          name: '/login', 
-          page: () => const LogIn(),
-          transition: Transition.fadeIn,
-        ),
-        GetPage(
-          name: '/signup', 
-          page: () => const SignUp(),
-        ),
-        GetPage(
-          name: '/home', 
-          page: () => const HomeScreen(),
-          transition: Transition.rightToLeftWithFade,
-        ),
-        GetPage(
-          name: '/settings', 
-          page: () => const SettingsScreen(),
-        ),
-        GetPage(
-          name: '/notifications', 
-          page: () => const NotificationScreen(),
-          transition: Transition.downToUp,
-        ),
-        GetPage(
-          name: '/profile', 
-          page: () => const ProfileScreen(),
-        ),
-        GetPage(
-          name: '/profile_edit', 
-          page: () => const ProfileEditScreen(),
-        ),
-        GetPage(
-          name: '/dashboard', 
-          page: () => const DashboardScreen(),
-        ),
-        GetPage(
-          name: '/analytics', 
-          page: () => const AnalyticsScreen(),
-        ),
-        GetPage(
-          name: '/tasks', 
-          page: () => const TaskScreen(),
-        ),
-        GetPage(
-          name: '/calendar', 
-          page: () => const CalendarScreen(),
-        ),
-        GetPage(
-          name: '/help', 
-          page: () => const HelpSupportScreen(),
-        ),
-        GetPage(
-          name: '/about', 
-          page: () => const AboutScreen(),
-        ),
-        GetPage(
-          name: '/chats', 
-          page: () => const ChatScreen(),
-        ),
-        GetPage(
-          name: '/search', 
-          page: () => const SearchScreen(),
-        ),
+        GetPage(name: '/login', page: () => const LogIn(), transition: Transition.fadeIn),
+        GetPage(name: '/signup', page: () => const SignUp()),
+        GetPage(name: '/home', page: () => const HomeScreen(), transition: Transition.rightToLeftWithFade),
+        GetPage(name: '/settings', page: () => const SettingsScreen()),
+        GetPage(name: '/notifications', page: () => const NotificationScreen(), transition: Transition.downToUp),
+        GetPage(name: '/profile', page: () => const ProfileScreen()),
+        GetPage(name: '/profile_edit', page: () => const ProfileEditScreen()),
+        GetPage(name: '/dashboard', page: () => const DashboardScreen()),
+        GetPage(name: '/analytics', page: () => const AnalyticsScreen()),
+        GetPage(name: '/tasks', page: () => const TaskScreen()),
+        GetPage(name: '/calendar', page: () => const CalendarScreen()),
+        GetPage(name: '/help', page: () => const HelpSupportScreen()),
+        GetPage(name: '/about', page: () => const AboutScreen()),
+        GetPage(name: '/chats', page: () => const ChatScreen()),
+        GetPage(name: '/search', page: () => const SearchScreen()),
+        GetPage(name: '/gallery', page: () => const GalleryScreen()),
       ],
     );
   }
