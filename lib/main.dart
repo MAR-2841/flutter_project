@@ -14,6 +14,8 @@ import 'dashboard_screen.dart';
 import 'analytics_screen.dart';
 import 'task_screen.dart';
 import 'calendar_screen.dart';
+import 'help_support_screen.dart';
+import 'about_screen.dart';
 import 'chat_screen.dart';
 import 'search_screen.dart';
 import 'gallery_screen.dart';
@@ -25,8 +27,6 @@ import 'weather_screen.dart';
 import 'privacy_policy_screen.dart';
 import 'feedback_screen.dart';
 import 'faq_screen.dart';
-import 'help_support_screen.dart';
-import 'about_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -89,6 +89,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/analytics', page: () => const AnalyticsScreen()),
         GetPage(name: '/tasks', page: () => const TaskScreen()),
         GetPage(name: '/calendar', page: () => const CalendarScreen()),
+        GetPage(name: '/help', page: () => const HelpSupportScreen()),
+        GetPage(name: '/about', page: () => const AboutScreen()),
         GetPage(name: '/chats', page: () => const ChatScreen()),
         GetPage(name: '/search', page: () => const SearchScreen()),
         GetPage(name: '/gallery', page: () => const GalleryScreen()),
@@ -100,8 +102,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/privacy', page: () => const PrivacyPolicyScreen()),
         GetPage(name: '/feedback', page: () => const FeedbackScreen()),
         GetPage(name: '/faq', page: () => const FAQScreen()),
-        GetPage(name: '/help', page: () => const HelpSupportScreen()),
-        GetPage(name: '/about', page: () => const AboutScreen()),
       ],
     );
   }
