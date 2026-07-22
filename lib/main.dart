@@ -25,6 +25,8 @@ import 'contacts_screen.dart';
 import 'news_screen.dart';
 import 'weather_screen.dart';
 import 'privacy_policy_screen.dart';
+import 'feedback_screen.dart';
+import 'faq_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -98,6 +100,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/news', page: () => const NewsScreen()),
         GetPage(name: '/weather', page: () => const WeatherScreen()),
         GetPage(name: '/privacy', page: () => const PrivacyPolicyScreen()),
+        GetPage(name: '/feedback', page: () => const FeedbackScreen()),
+        GetPage(name: '/faq', page: () => const FAQScreen()),
       ],
     );
   }
