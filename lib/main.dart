@@ -30,6 +30,8 @@ import 'about_screen.dart';
 import 'terms_of_service_screen.dart';
 import 'contact_us_screen.dart';
 import 'report_bug_screen.dart';
+import 'security_screen.dart';
+import 'document_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -108,6 +110,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/terms', page: () => const TermsOfServiceScreen()),
         GetPage(name: '/contact_us', page: () => const ContactUsScreen()),
         GetPage(name: '/report_bug', page: () => const ReportBugScreen()),
+        GetPage(name: '/security', page: () => const SecurityScreen()),
+        GetPage(name: '/documents', page: () => const DocumentScreen()),
       ],
     );
   }
