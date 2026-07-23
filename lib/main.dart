@@ -28,6 +28,8 @@ import 'faq_screen.dart';
 import 'help_support_screen.dart';
 import 'about_screen.dart';
 import 'terms_of_service_screen.dart';
+import 'contact_us_screen.dart';
+import 'report_bug_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -104,6 +106,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/help', page: () => const HelpSupportScreen()),
         GetPage(name: '/about', page: () => const AboutScreen()),
         GetPage(name: '/terms', page: () => const TermsOfServiceScreen()),
+        GetPage(name: '/contact_us', page: () => const ContactUsScreen()),
+        GetPage(name: '/report_bug', page: () => const ReportBugScreen()),
       ],
     );
   }
