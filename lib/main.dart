@@ -34,6 +34,7 @@ import 'security_screen.dart';
 import 'document_screen.dart';
 import 'notification_settings_screen.dart';
 import 'language_screen.dart';
+import 'invite_friends_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -116,6 +117,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/documents', page: () => const DocumentScreen()),
         GetPage(name: '/notification_settings', page: () => const NotificationSettingsScreen()),
         GetPage(name: '/language', page: () => const LanguageScreen()),
+        GetPage(name: '/invite', page: () => const InviteFriendsScreen()),
       ],
     );
   }
