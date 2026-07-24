@@ -32,6 +32,8 @@ import 'contact_us_screen.dart';
 import 'report_bug_screen.dart';
 import 'security_screen.dart';
 import 'document_screen.dart';
+import 'notification_settings_screen.dart';
+import 'language_screen.dart';
 
 // Global flag to check if firebase is ready
 bool isFirebaseInitialized = false;
@@ -112,6 +114,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/report_bug', page: () => const ReportBugScreen()),
         GetPage(name: '/security', page: () => const SecurityScreen()),
         GetPage(name: '/documents', page: () => const DocumentScreen()),
+        GetPage(name: '/notification_settings', page: () => const NotificationSettingsScreen()),
+        GetPage(name: '/language', page: () => const LanguageScreen()),
       ],
     );
   }
